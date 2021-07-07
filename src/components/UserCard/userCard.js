@@ -10,9 +10,10 @@ function UserCard() {
 
             </div>
             <div className="user-card-cont">
-                <div className="user-card-title">Flex</div>
+                <div className="user-card-name">Diego</div>
+                <p className="user-surname">Jarauta</p>
                 <p className="user-id">#2</p>
-                <p className="user-card-text">mustertest@gmail.com</p>
+                <p className="user-card-email">mustertest@gmail.com</p>
             </div>
             <div className="btn-row">
                 <button>

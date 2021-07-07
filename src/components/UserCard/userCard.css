@@ -42,7 +42,7 @@
   .card__image--fence {
     background-image: url(https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg);
   }
-  .user-card-title {
+  .user-card-name {
     text-align: center;
     color: #696969;
     font-size: 1.65rem;
@@ -52,13 +52,14 @@
     padding-top: 13px;
     line-height:14px;
   }
-  .user-card-text {
+  .user-card-email {
     text-align: center;
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
     font-size: 0.875rem;
     line-height: 1.5;
+    padding-top: 10px;
     margin-bottom: 1.25rem;
   }
   
@@ -84,9 +85,16 @@
     color:white;
   }
   
+  .user-surname{
+    font-size: 1.2rem;
+    text-align: center;
+    padding-top: 10px;
+  }
+
   .user-id{
     font-size: .7rem;
     text-align: center;
+    padding-top: 10px;
   }
   
   .user-card-img{
