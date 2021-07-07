@@ -4,7 +4,8 @@ import { useState } from 'react';
 import {BrowserRouter, Route} from "react-router-dom"
 
 import Header from "./components/Header/header"
-import LogIn_signUp from "./containers/LogIn_signUp/logIn_signUp"
+import LogIn_signUp from "./pages/LogIn_signUp/logIn_signUp"
+import Users from './pages/Users/users';
 import Footer from "./components/Footer/footer"
 
 function App() {
@@ -70,6 +71,9 @@ function App() {
     </Route>
     <Route exact path="/signUp">
       <LogIn_signUp logIn={logIn} signUp={signUp} page="signUp" log={log}/>
+    </Route>
+    <Route exatc path="/users">
+      <Users />
     </Route>
     <Footer/>
   </BrowserRouter>);
