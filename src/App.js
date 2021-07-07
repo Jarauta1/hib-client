@@ -11,6 +11,7 @@ import Footer from "./components/Footer/footer"
 function App() {
 
   let [log, setLog] = useState(false)
+  let [token, setToken] = useState("")
 
   const logIn = (emailLogIn, passwordLogIn) => {
     fetch("http://localhost:3001/logIn", {
@@ -24,6 +25,7 @@ function App() {
         document.getElementById("messageLogIn").innerHTML = `<span>${server.data.message}</span>`
       } else {
         document.getElementById("messageLogIn").innerHTML = `<span>Logueado</span>`
+        setToken(server.data.accessToken)
         setLog(true)
         console.log(server)
       }
@@ -78,7 +80,7 @@ function App() {
       <LogIn_signUp logIn={logIn} signUp={signUp} page="signUp" log={log}/>
     </Route>
     <Route exatc path="/users">
-      <Users />
+      <Users token={token}/>
     </Route>
     <Footer/>
   </BrowserRouter>);
