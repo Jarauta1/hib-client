@@ -34,13 +34,13 @@ function Users(props) {
         })
     }
 
-    function uptdateUser(id) {
+    function uptdateUser(id,name,surname,email) {
         fetch("http://localhost:3001/users/update", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({token: props.token, type: props.type, id: id}),
+            body: JSON.stringify({token: props.token, type: props.type, id: id, name: name, surname: surname, email: email}),
         }).then((res)=>res.json()).then((server)=>{
             setNum(num+1)
         })

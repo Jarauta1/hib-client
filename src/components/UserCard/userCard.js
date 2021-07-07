@@ -1,6 +1,29 @@
 import userCard from "./userCard.css"
+import {useState} from "react"
 
 function UserCard(props) {
+
+    var body = document.getElementsByTagName('body')[0];
+
+    function toggleForm() {
+        body.classList.toggle('form-active');
+    }
+
+    let [updateName, setUpdateName] = useState("")
+    let [updateSurname, setUpdateSurname] = useState("")
+    let [updateEmail, setUpdateEmail] = useState("")
+
+    function changeUpdateName(e) {
+        setUpdateName(e.target.value)
+      }
+
+    function changeUpdateSurname(e) {
+        setUpdateSurname(e.target.value)
+      }
+
+    function changeUpdateEmail(e) {
+        setUpdateEmail(e.target.value)
+      }
 
     return(<>
         <div className="user-card">
@@ -15,13 +38,20 @@ function UserCard(props) {
                 <p className="user-card-email">{props.email}</p>
             </div>
             <div className="btn-row">
-                <button onClick={()=>props.updateUser(props.id)}>
+                <button onClick={toggleForm}>
                     <span className="material-icons edit-btn">edit</span>
                 </button>
                 <button onClick={()=>props.deleteUser(props.id)}>
                     <span className="material-icons edit-btn red">delete</span>
-                </button></div>
-            </div> 
+                </button>
+            </div>
+        </div> 
+            <form>
+	            <input onChange={changeUpdateName} type="text" name="name" placeHolder={props.name}/>
+	            <input onChange={changeUpdateSurname} type="text" name="surname" placeHolder={props.surname}/>
+	            <input onChange={changeUpdateEmail} type="text" name="email" placeHolder={props.email}/>
+	            <button className="pay" onClick={()=>props.updateeUser(props.id,updateName,updateSurname,setUpdateEmail)}>Uptdate</button>
+            </form>
     </>)
 }
 
