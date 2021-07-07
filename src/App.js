@@ -23,7 +23,9 @@ function App() {
       if (server.data.statusCode !== undefined) {
         document.getElementById("messageLogIn").innerHTML = `<span>${server.data.message}</span>`
       } else {
+        document.getElementById("messageLogIn").innerHTML = `<span>Logueado</span>`
         setLog(true)
+        console.log(server)
       }
       /* 
       
@@ -46,14 +48,17 @@ function App() {
           },
           body: JSON.stringify({nameSignUp: nameSignUp, surnameSignUp: surnameSignUp, emailSignUp: emailSignUp, passwordSignUp: passwordSignUp}),
         }).then((res)=>res.json()).then((server)=>{
-          console.log(server.data.statusCode)
-          if (server.data.statusCode === 409) {
+          console.log(server.data)
+          console.log(server.header)
+          document.getElementById("messageSignUp").innerHTML = "<span>Signeado</span>"
+          setLog(true)
+          /* if (server.data.statusCode === 409) {
             document.getElementById("messageSignUp").innerHTML = `<span>${server.data.message}</span>`
           } else if (server.data.statusCode === 204) {
             setLog(true)
             console.log("entra")
-          }
-         
+          } */
+        
          /*  
              localStorage.setItem("mail",res.usuario)
            }  */    
@@ -62,7 +67,7 @@ function App() {
   }
   
   return (<BrowserRouter>
-    <Header /* salir={} *//>
+    <Header log={log} /* salir={} *//>
     <Route exact path="/">
 
     </Route>

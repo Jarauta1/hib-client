@@ -1,32 +1,10 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
 import logo from "./assets/logo_header.png"
 
 function Header(props) {
 
-    let [usuario, setUsuario] = useState("")
-    let [datos,setDatos] = useState([])
-    let [cesta,setCesta] = useState(0)
-
-    useEffect(function(){
-  
-        if (usuario !== "") {
-        fetch("http://localhost:3000/usuarios/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({usuario: usuario}),
-            }).then((res)=>res.json()).then((res)=>{
-                setDatos(res.datos[0].cesta)
-                setCesta(datos.length)
-            })
-          }
-      },[usuario])
-
-
-    if (usuario != "") {
+    if (props.log === true) {
         return(<>
             <section className="header-section">
                 <div>
