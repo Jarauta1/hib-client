@@ -12,6 +12,7 @@ function App() {
 
   let [log, setLog] = useState(false)
   let [token, setToken] = useState("")
+  let [type, setType] = useState("")
 
   const logIn = (emailLogIn, passwordLogIn) => {
     fetch("http://localhost:3001/logIn", {
@@ -26,6 +27,7 @@ function App() {
       } else {
         document.getElementById("messageLogIn").innerHTML = `<span>Logueado</span>`
         setToken(server.data.accessToken)
+        setType(server.data.tokenType)
         setLog(true)
         console.log(server)
       }
@@ -80,7 +82,7 @@ function App() {
       <LogIn_signUp logIn={logIn} signUp={signUp} page="signUp" log={log}/>
     </Route>
     <Route exatc path="/users">
-      <Users token={token}/>
+      <Users token={token} type={type}/>
     </Route>
     <Footer/>
   </BrowserRouter>);
