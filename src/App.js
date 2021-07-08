@@ -8,6 +8,7 @@ import Home from './pages/Home/home';
 import LogIn_signUp from "./pages/LogIn_signUp/logIn_signUp"
 import Users from './pages/Users/users';
 import EditUser from './components/EditUser/editUser';
+import LogOut from './pages/LogOut/logOut';
 import Footer from "./components/Footer/footer"
 
 function App() {
@@ -15,8 +16,10 @@ function App() {
   let [log, setLog] = useState(false)
   let [token, setToken] = useState("")
   let [type, setType] = useState("")
+  let [password, setPassword] = useState("")
 
   const logIn = (emailLogIn, passwordLogIn) => {
+    setPassword(passwordLogIn)
     fetch("http://localhost:3001/logIn", {
       method: "POST",
       headers: {
@@ -31,13 +34,8 @@ function App() {
         setToken(server.data.accessToken)
         setType(server.data.tokenType)
         setLog(true)
-        console.log(server)
       }
-      /* 
-      
-        localStorage.setItem("mail",res.usuario)
-      }      */
-    })
+  })
   }
 
   const signUp = (nameSignUp,surnameSignUp,emailSignUp,passwordSignUp,confirmationSignUp) => {
@@ -47,6 +45,7 @@ function App() {
       } else if (confirmationSignUp !== passwordSignUp) {
         document.getElementById("messageSignUp").innerHTML = "<span>La contraseña no coincide</span>"
       } else {
+        setPassword(passwordSignUp)
         fetch("http://localhost:3001/signUp",{
           method: "POST",
           headers: {
@@ -54,26 +53,18 @@ function App() {
           },
           body: JSON.stringify({nameSignUp: nameSignUp, surnameSignUp: surnameSignUp, emailSignUp: emailSignUp, passwordSignUp: passwordSignUp}),
         }).then((res)=>res.json()).then((server)=>{
-          console.log(server.data)
-          console.log(server.header)
           document.getElementById("messageSignUp").innerHTML = "<span>Signeado</span>"
-          setLog(true)
-          /* if (server.data.statusCode === 409) {
-            document.getElementById("messageSignUp").innerHTML = `<span>${server.data.message}</span>`
-          } else if (server.data.statusCode === 204) {
-            setLog(true)
-            console.log("entra")
-          } */
-        
-         /*  
-             localStorage.setItem("mail",res.usuario)
-           }  */    
+          setLog(true) 
         })
       }
   }
 
+  const logOut = () => {
+    setLog(false)
+  }
+
   return (<BrowserRouter>
-    <Header log={log} /* salir={} *//>
+    <Header log={log}/>
     <Route exact path="/">
       <Home log={log}/>
     </Route>
@@ -84,10 +75,11 @@ function App() {
       <LogIn_signUp logIn={logIn} signUp={signUp} page="signUp" log={log}/>
     </Route>
     <Route exatc path="/users">
-      <Users token={token} type={type}/>
+      <Users token={token} type={type} password={password}/>
     </Route>
-    <Route exact path="/updateUser" render={(props)=><EditUser {...props}/>}>
-     
+    <Route exact path="/updateUser" render={(props)=><EditUser {...props}/>}></Route>
+    <Route exact path="/logOut">
+      <LogOut logOut={logOut}/>
     </Route>
     <Footer/>
   </BrowserRouter>);

@@ -7,6 +7,9 @@ function Users(props) {
 
     let [users, setUsers] = useState([])
     let [num, setNum] = useState(0)
+
+    let [token, setToken] = useState(props.token)
+    let [type, setType] = useState(props.type)
     
     useEffect(function(){
         
@@ -15,7 +18,7 @@ function Users(props) {
           headers: {
               "Content-Type": "application/json",
           },
-          body: JSON.stringify({token: props.token, type: props.type}),
+          body: JSON.stringify({token: token, type: type}),
         }).then((res)=>res.json()).then((server)=>{
           setUsers(server.data.items)
         })
@@ -28,7 +31,7 @@ function Users(props) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({token: props.token, type: props.type, id: id}),
+            body: JSON.stringify({token: token, type: type, id: id}),
         }).then((res)=>res.json()).then((server)=>{
             setNum(num+1)
         })
@@ -38,7 +41,7 @@ function Users(props) {
     let showUsers = users.map(user=>{
         return(
             <li className="user-card-item">
-                <UserCard deleteUser={deleteUser} name={user.name} surname={user.surname} id={user.id} email={user.email}/>
+                <UserCard deleteUser={deleteUser} password={props.password} token={token} type={type} name={user.name} surname={user.surname} id={user.id} email={user.email}/>
             </li>)
     })
    

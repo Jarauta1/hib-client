@@ -10,7 +10,7 @@ import {Link} from "react-router-dom"
 
 
 function Home (props) {
-
+console.log(props)
   if (props.log === true) {
     return(<>
     <div className="container-portada">

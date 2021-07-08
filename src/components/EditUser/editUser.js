@@ -6,16 +6,13 @@ import {useState} from "react"
 import {Redirect} from "react-router-dom"
 
 function EditUser (props) {
-    console.log(props.location.state.id)
+    
     let [updateName, setUpdateName] = useState("")
     let [updateSurname, setUpdateSurname] = useState("")
     let [updateEmail, setUpdateEmail] = useState("")
 
-  function cambioPantalla () {
-    setNum(num+1)
-    setMessage("")
-    document.querySelector('.container-login').classList.toggle('active');
-  }
+    let [edit, setEdit] = useState(false)
+
 
   function changeUpdateName(e) {
     setUpdateName(e.target.value)
@@ -30,43 +27,49 @@ function changeUpdateEmail(e) {
   }
 
 function updateUser(id,name,surname,email) {
-    /* fetch("http://localhost:3001/users/update", {
+    fetch("http://localhost:3001/users/update", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({token: props.token, type: props.type, id: id, name: name, surname: surname, email: email}),
+        body: JSON.stringify({
+            password: props.location.state.password, 
+            token: props.location.state.token, 
+            type: props.location.state.type,
+            id: id, 
+            name: name, 
+            surname: surname, 
+            email: email}),
     }).then((res)=>res.json()).then((server)=>{
-        setNum(num+1)
-    }) */
-    console.log("has editado al tio",this.props.location.state.id)
+       setEdit(true)
+    })
+    
 }
 
+if (edit === true) {
+    return (<Redirect to="/users"/>)
+} else {
 return(<>
     <section className="login-page">
-        <div className="user signupBx">
-            <div className="formBx">
-                <div className="opcion-registro">
-                    <h2>CREAR UNA CUENTA</h2>
-                    <input onChange={changeUpdateName} className="input-long" type="text" name="name" placeholder="Nombre"/>
-                    <input onChange={changeUpdateSurname} className="input-long" type="text" name="surname" placeholder="Primer apellido"/>
-                    <input onChange={changeUpdateEmail} className="input-long" type="text" name="email" placeholder="Correo electrónico" />
-                    <div className="boton-mensaje">
-                        <input onClick={()=>updateUser(id,updateName,updateSurname,updateEmail)} className="input-long" type="submit" name="" value="Update" />
-            
+        <div className="container-login">
+            <div className="user signinBx">
+                <div className="formBx">
+                    <div className="opcion-registro">
+                        <h2>UPDATE USER</h2>
+                        <input onChange={changeUpdateName} className="input-long" type="text" name="name" placeholder={props.location.state.name} required/>
+                        <input onChange={changeUpdateSurname} className="input-long" type="text" name="surname" placeholder={props.location.state.surname} required/>
+                        <input onChange={changeUpdateEmail} className="input-long" type="text" name="email" placeholder={props.location.state.email} required/>
+                        <div className="boton-mensaje">
+                        <input onClick={()=>updateUser(props.location.state.id,updateName,updateSurname,updateEmail)} className="input-long" type="submit" name="" value="Update" />
+                        </div>
                     </div>
-                    <p className="signup">
-              
-                        <a onClick={cambioPantalla}>  UPDATE</a>
-                    </p>
                 </div>
+                <div className="imgBx"><img src={editUser} alt="" /></div>
             </div>
-            <div className="imgBx"><img src={editUser} alt="" /></div>
         </div>
-    
   </section>
     </>)
-
+}
 }
 
 export default EditUser;

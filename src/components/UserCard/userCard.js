@@ -7,12 +7,12 @@ function UserCard(props) {
 
     let [edit, setEdit] = useState(false)
 
-    function editUser(id,name,surname,email) {
+    function editUser() {
         setEdit(true)
     }
 
     if (edit === true) {
-        return (<Redirect to={{ pathname:"/updateUser", state:{id: props.id,name:props.name,surname:props.surname,email:props.email}}}/>)
+        return (<Redirect to={{ pathname:"/updateUser", state:{password: props.password, token: props.token, type: props.type, id: props.id,name:props.name,surname:props.surname,email:props.email}}}/>)
     } else {
     return(<>
         <div className="user-card">
@@ -27,7 +27,7 @@ function UserCard(props) {
                 <p className="user-card-email">{props.email}</p>
             </div>
             <div className="btn-row">
-                <button onClick={()=>editUser(props.id,props.name,props.surname,props.email)}>
+                <button onClick={()=>editUser()}>
                     <span className="material-icons edit-btn">edit</span>
                 </button>
                 <button onClick={()=>props.deleteUser(props.id)}>
