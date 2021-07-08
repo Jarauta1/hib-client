@@ -41,7 +41,6 @@
 	line-height: 0;
 	text-align: center;
 	text-decoration: none;
-	background-color: #1f2027;
 }
 .a-social:before {
 	content: "";
@@ -53,7 +52,6 @@
 	margin-top: -50%;
 	margin-left: -50%;
 	border-radius: 100px;
-	background-color: #1f2027;
 	transition: all 400ms;
 }
 .a-social:after {

@@ -1,44 +1,49 @@
 import './home.css';
 
-/* import camisetas from "../Imagenes/seccion_camisetas.jpg"
-import libros from "../Imagenes/seccion_libros.jpg"
-import cine from "../Imagenes/seccion_cine.jpg"
-import zapatillas from "../Imagenes/seccion_zapatillas.jpg"
-import comics from "../Imagenes/seccion_comics.jpg" */
+import logIn from "./assets/login.jpg"
+import signUp from "./assets/signup.jpg"
+import users from "./assets/users.jpg"
+import logOut from "./assets/logout.jpg"
+
 
 import {Link} from "react-router-dom"
 
 
-function Portada () {
-  localStorage.setItem("retorno", "")
+function Home (props) {
+
+  if (props.log === true) {
     return(<>
     <div className="container-portada">
-      <div className="row-portada">
-      <div className="div-portada starred">
-      <Link to="/camisetas"><h1 className="starred-title">CAMISETAS</h1>
-            <img className="img-portada" src={camisetas} alt=""/></Link>
-        </div>
-        <div className="div-portada starred">
-      <Link to="/comics"><h1 className="starred-title">COMICS</h1>
-            <img className="img-portada" src={comics} alt=""/></Link>
-        </div>
-        <div className="div-portada starred">
-      <Link to="/libros"><h1 className="starred-title">LIBROS</h1>
-            <img className="img-portada" src={libros} alt=""/></Link>
-        </div>
-      </div>
+      
       <div className="row-portada">
       <div className="div-portada-50 starred">
-      <Link to="/cine"><h1 className="starred-title">CINE</h1>
-            <img className="img-portada" src={cine} alt=""/></Link>
+      <Link to="/users"><h1 className="starred-title">USERS</h1>
+            <img className="img-portada" src={users} alt=""/></Link>
         </div>
         <div className="div-portada-50 starred">
-      <Link to="/zapatillas"><h1 className="starred-title">ZAPATILLAS</h1>
-            <img className="img-portada" src={zapatillas} alt=""/></Link>
+      <Link to="/logOut"><h1 className="starred-title">LOGOUT</h1>
+            <img className="img-portada" src={logOut} alt=""/></Link>
         </div>
       </div>
     </div>
 		</>);
+  } else if (props.log === false) {
+    return(<>
+    <div className="container-portada">
+      
+      <div className="row-portada">
+      <div className="div-portada-50 starred">
+      <Link to="/logIn"><h1 className="starred-title">LOGIN</h1>
+            <img className="img-portada" src={logIn} alt=""/></Link>
+        </div>
+        <div className="div-portada-50 starred">
+      <Link to="/signUp"><h1 className="starred-title">SIGN UP</h1>
+            <img className="img-portada" src={signUp} alt=""/></Link>
+        </div>
+      </div>
+    </div>
+		</>);
+  }
 }
 
-  export default Portada;
+  export default Home;

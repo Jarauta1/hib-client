@@ -34,25 +34,11 @@ function Users(props) {
         })
     }
 
-    function uptdateUser(id,name,surname,email) {
-        fetch("http://localhost:3001/users/update", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({token: props.token, type: props.type, id: id, name: name, surname: surname, email: email}),
-        }).then((res)=>res.json()).then((server)=>{
-            setNum(num+1)
-        })
-    }
-   
-
-
-
+    
     let showUsers = users.map(user=>{
         return(
             <li className="user-card-item">
-                <UserCard uptdateUser={uptdateUser} deleteUser={deleteUser} name={user.name} surname={user.surname} id={user.id} email={user.email}/>
+                <UserCard deleteUser={deleteUser} name={user.name} surname={user.surname} id={user.id} email={user.email}/>
             </li>)
     })
    

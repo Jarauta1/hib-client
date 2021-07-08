@@ -4,8 +4,10 @@ import { useState } from 'react';
 import {BrowserRouter, Route} from "react-router-dom"
 
 import Header from "./components/Header/header"
+import Home from './pages/Home/home';
 import LogIn_signUp from "./pages/LogIn_signUp/logIn_signUp"
 import Users from './pages/Users/users';
+import EditUser from './components/EditUser/editUser';
 import Footer from "./components/Footer/footer"
 
 function App() {
@@ -69,11 +71,11 @@ function App() {
         })
       }
   }
-  
+
   return (<BrowserRouter>
     <Header log={log} /* salir={} *//>
     <Route exact path="/">
-
+      <Home log={log}/>
     </Route>
     <Route exact path="/logIn">
       <LogIn_signUp logIn={logIn} signUp={signUp} page="logIn" log={log}/>
@@ -83,6 +85,9 @@ function App() {
     </Route>
     <Route exatc path="/users">
       <Users token={token} type={type}/>
+    </Route>
+    <Route exact path="/updateUser" render={(props)=><EditUser {...props}/>}>
+     
     </Route>
     <Footer/>
   </BrowserRouter>);
