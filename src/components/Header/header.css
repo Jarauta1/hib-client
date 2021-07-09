@@ -45,12 +45,7 @@
   
 /* menu */
   
-/* .menu-header {
-	font-family: "Google Sans Regular";
-} */
-  
 .header-section .menu-header {
-	/* margin-top: 10px; */
 	justify-items: space-around;
 	clear: both;
 	max-height: 0;
@@ -135,10 +130,6 @@
 	.header-section li {
 	  float: left;
 	}
-
-	/* .header-section .material-icons {
-		float: none;
-	} */
 
 	.header-section {
 	  display: flex;

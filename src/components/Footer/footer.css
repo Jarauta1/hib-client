@@ -21,7 +21,7 @@
   }
 }
 
-/* Iconos RRSS */
+/* Icons RRSS */
 
 @font-face {
 	font-family: 'icomoon';
@@ -58,7 +58,6 @@
 	position: relative;
 	display: block;
 	font-family: 'icomoon';
-	/* speak: none; */
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
@@ -88,7 +87,6 @@
 .social-networks .icon-github:after {
 	content: "\eab1";
 }
-
 
 @keyframes bounce {
 	0%, 20%, 53%, 80%, 100% {

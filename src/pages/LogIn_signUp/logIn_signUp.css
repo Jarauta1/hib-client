@@ -66,7 +66,7 @@
   transition: 0.5s;
 }
 
-.login-page .container-login .user .formBx .opcion-registro h2 {
+.login-page .container-login .user .formBx .input-data h2 {
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -77,7 +77,7 @@
   color: #003a66;
 }
 
-.login-page .container-login .user .formBx .opcion-registro input {
+.login-page .container-login .user .formBx .input-data input {
   position: relative;
   padding: 10px;
   /* background: #f5f5f5; */
@@ -92,11 +92,11 @@
   font-weight: 300;
 }
 
-.login-page .container-login .user .formBx .opcion-registro .input-long {
+.login-page .container-login .user .formBx .input-data .input-long {
   width: 100%;
 }
 
-.login-page .container-login .user .formBx .opcion-registro input[type='submit'] {
+.login-page .container-login .user .formBx .input-data input[type='submit'] {
   max-width: 100px;
   background: #003a66;
   color: #f0f0f0;
@@ -107,7 +107,7 @@
   transition: 0.5s;
 }
 
-.login-page .container-login .user .formBx .opcion-registro .signup {
+.login-page .container-login .user .formBx .input-data .signup {
   position: relative;
   margin-top: 20px;
   font-size: 12px;
@@ -117,7 +117,7 @@
   font-weight: 300;
 }
 
-.login-page .container-login .user .formBx .opcion-registro .signup a {
+.login-page .container-login .user .formBx .v .signup a {
   font-weight: 600;
   text-decoration: none;
   color: #003a66;
@@ -164,7 +164,7 @@
   left: -100%;
 }
 
-.boton-mensaje {
+.data-button {
   display: flex;
   align-items: center;
 }

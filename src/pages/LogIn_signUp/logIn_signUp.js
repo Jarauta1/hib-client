@@ -69,11 +69,11 @@ if (props.log === true) {
       <div className="user signinBx">
         <div className="imgBx"><img src={logIn_image} alt="" /></div>
         <div className="formBx">
-          <div className="opcion-registro">
+          <div className="input-data">
             <h2>IniciaR sesión</h2>
             <input onChange={changeMailLogIn} className="input-long" type="text" name="" placeholder="Correo electrónico" />
             <input onChange={changePasswordLogIn} className="input-long" type="password" name="" placeholder="Contraseña" />
-            <div className="boton-mensaje">
+            <div className="data-button">
             <input onClick={()=>props.logIn(emailLogIn,passwordLogIn)} className="input-long" type="submit" name="" value="Acceder"/>
             <div id="messageLogIn">
               {message}
@@ -88,7 +88,7 @@ if (props.log === true) {
       </div>
       <div className="user signupBx">
         <div className="formBx">
-          <div className="opcion-registro">
+          <div className="input-data">
             <h2>CREAR UNA CUENTA</h2>
             <input onChange={changeNameSignUp} className="input-long" type="text" name="nombre" placeholder="Nombre"/>
             <input onChange={changeSurnameSignUp} className="input-long" type="text" name="primerApellido" placeholder="Primer apellido"/>
@@ -97,7 +97,7 @@ if (props.log === true) {
             <input onChange={changeEmailSignUp} className="input-long" type="text" name="email" placeholder="Correo electrónico" />
             <input onChange={changePasswordSignUp} className="input-long" type="password" name="contraseña" placeholder="Contraseña" />
             <input onChange={changeConfirmationSignUp} className="input-long" type="password" name="confContraseña" placeholder="Confirmar contraseña" />
-            <div className="boton-mensaje">
+            <div className="data-button">
             <input onClick={()=>props.signUp(nameSignUp,surnameSignUp,emailSignUp,passwordSignUp,confirmationSignUp)} className="input-long" type="submit" name="" value="Regístrate" />
             <div id="messageSignUp">
               {message}
