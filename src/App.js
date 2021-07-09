@@ -63,24 +63,26 @@ function App() {
   }
 
   return (<BrowserRouter>
-    <Header log={log}/>
-    <Route exact path="/">
-      <Home log={log}/>
-    </Route>
-    <Route exact path="/logIn">
-      <LogIn_signUp logIn={logIn} signUp={signUp} page="logIn" log={log}/>
-    </Route>
-    <Route exact path="/signUp">
-      <LogIn_signUp logIn={logIn} signUp={signUp} page="signUp" log={log}/>
-    </Route>
-    <Route exatc path="/users">
-      <Users token={token} type={type} password={password}/>
-    </Route>
-    <Route exact path="/updateUser" render={(props)=><EditUser {...props}/>}></Route>
-    <Route exact path="/logOut">
-      <LogOut logOut={logOut}/>
-    </Route>
-    <Footer/>
+    <Header className="header" log={log}/>
+    <div className="screen">
+      <Route exact path="/">
+        <Home log={log}/>
+      </Route>
+      <Route exact path="/logIn">
+        <LogIn_signUp logIn={logIn} signUp={signUp} page="logIn" log={log}/>
+      </Route>
+      <Route exact path="/signUp">
+        <LogIn_signUp logIn={logIn} signUp={signUp} page="signUp" log={log}/>
+      </Route>
+      <Route exatc path="/users">
+        <Users token={token} type={type} password={password}/>
+      </Route>
+      <Route exact path="/updateUser" render={(props)=><EditUser {...props}/>}></Route>
+      <Route exact path="/logOut">
+        <LogOut logOut={logOut}/>
+      </Route>
+    </div>
+    <Footer className="footer"/>
   </BrowserRouter>);
 }
 
