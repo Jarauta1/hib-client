@@ -62,7 +62,10 @@ function LogIn_signUp (props) {
 
   if (props.log === true) {
     return(<Redirect to="/"/>)
-  } else {
+  } else if (props.signIn === true) {
+    return(<Redirect to="/logIn"/>)
+  }
+  else {
     return(<>
       <section className="login-page">
         <div className="container-login">

@@ -1,7 +1,7 @@
 import './App.css';
 
 import { useState } from 'react';
-import {BrowserRouter, Route} from "react-router-dom"
+import {BrowserRouter, Redirect, Route} from "react-router-dom"
 
 import Header from "./components/Header/header"
 import Home from './pages/Home/home';
@@ -14,6 +14,7 @@ import Footer from "./components/Footer/footer"
 function App() {
 
   let [log, setLog] = useState(false)
+  let [signIn, setSignIn] = useState(false)
   let [token, setToken] = useState("")
   let [type, setType] = useState("")
   let [password, setPassword] = useState("")
@@ -52,8 +53,17 @@ function App() {
         },
         body: JSON.stringify({nameSignUp: nameSignUp, surnameSignUp: surnameSignUp, emailSignUp: emailSignUp, passwordSignUp: passwordSignUp}),
       }).then((res)=>res.json()).then((server)=>{
-        document.getElementById("messageSignUp").innerHTML = "<span>Registered</span>"
-        setLog(true) 
+        if (server.status === 204) {
+          window.alert(`Welcome ${nameSignUp}!, in order to enjoy full access, please Log In.`)
+          document.getElementById("messageSignUp").innerHTML = "<span>Registered</span>"
+          setSignIn(true) 
+        } else if (server.status === 409) {
+          document.getElementById("messageSignUp").innerHTML = `<span>${server.data.message}</span>`
+          setLog(false)
+        } else {
+          document.getElementById("messageSignUp").innerHTML = `<span>Internal API error</span>`
+          setLog(false)
+        }
       })
     }
   }
@@ -63,7 +73,7 @@ function App() {
   }
 
   return (<BrowserRouter>
-    <Header className="header" log={log}/>
+    <Header className="header" log={log} signIn={signIn}/>
     <div className="screen">
       <Route exact path="/">
         <Home log={log}/>
@@ -72,7 +82,7 @@ function App() {
         <LogIn_signUp logIn={logIn} signUp={signUp} page="logIn" log={log}/>
       </Route>
       <Route exact path="/signUp">
-        <LogIn_signUp logIn={logIn} signUp={signUp} page="signUp" log={log}/>
+        <LogIn_signUp logIn={logIn} signUp={signUp} page="signUp" log={log} signIn={signIn}/>
       </Route>
       <Route exatc path="/users">
         <Users token={token} type={type} password={password}/>
