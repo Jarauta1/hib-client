@@ -26,16 +26,16 @@ function changeUpdateEmail(e) {
     setUpdateEmail(e.target.value)
   }
 
-function updateUser(id,name,surname,email) {
+function updateUser(id,name,surname,email,password,token,type) {
     fetch("http://localhost:3001/users/update", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            password: props.location.state.password, 
-            token: props.location.state.token, 
-            type: props.location.state.type,
+            password: password, 
+            token: token, 
+            type: type,
             id: id, 
             name: name, 
             surname: surname, 
@@ -60,7 +60,7 @@ return(<>
                         <input onChange={changeUpdateSurname} className="input-long" type="text" name="surname" placeholder={props.location.state.surname} required/>
                         <input onChange={changeUpdateEmail} className="input-long" type="text" name="email" placeholder={props.location.state.email} required/>
                         <div className="boton-mensaje">
-                        <input onClick={()=>updateUser(props.location.state.id,updateName,updateSurname,updateEmail)} className="input-long" type="submit" name="" value="Update" />
+                        <input onClick={()=>updateUser(props.location.state.id,updateName,updateSurname,updateEmail,props.location.state.password,props.location.state.token,props.location.state.type)} className="input-long" type="submit" name="" value="Update" />
                         </div>
                     </div>
                 </div>
