@@ -37,7 +37,6 @@ function Users(props) {
         })
     }
 
-    
     let showUsers = users.map(user=>{
         return(
             <li className="user-card-item">
@@ -45,11 +44,12 @@ function Users(props) {
             </li>)
     })
    
-    return(<div className="users-back">
-        <ul className="cards">
-            {showUsers}
-        </ul>  
-    </div>)
+    return(
+        <div className="users-back">
+            <ul className="cards">
+                {showUsers}
+            </ul>  
+        </div>)
 }
 
 export default Users;

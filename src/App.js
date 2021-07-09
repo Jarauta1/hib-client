@@ -35,28 +35,27 @@ function App() {
         setType(server.data.tokenType)
         setLog(true)
       }
-  })
+    })
   }
 
-  const signUp = (nameSignUp,surnameSignUp,emailSignUp,passwordSignUp,confirmationSignUp) => {
-         
-     if (passwordSignUp.length < 6) {
-       document.getElementById("messageSignUp").innerHTML = "<span>La contraseña debe tener al menos 6 carácteres</span>"
-      } else if (confirmationSignUp !== passwordSignUp) {
-        document.getElementById("messageSignUp").innerHTML = "<span>La contraseña no coincide</span>"
-      } else {
-        setPassword(passwordSignUp)
-        fetch("http://localhost:3001/signUp",{
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({nameSignUp: nameSignUp, surnameSignUp: surnameSignUp, emailSignUp: emailSignUp, passwordSignUp: passwordSignUp}),
-        }).then((res)=>res.json()).then((server)=>{
-          document.getElementById("messageSignUp").innerHTML = "<span>Signeado</span>"
-          setLog(true) 
-        })
-      }
+  const signUp = (nameSignUp,surnameSignUp,emailSignUp,passwordSignUp,confirmationSignUp) => {    
+    if (passwordSignUp.length < 6) {
+      document.getElementById("messageSignUp").innerHTML = "<span>The password must be at least 6 characters long</span>"
+    } else if (confirmationSignUp !== passwordSignUp) {
+      document.getElementById("messageSignUp").innerHTML = "<span>Password not matching</span>"
+    } else {
+      setPassword(passwordSignUp)
+      fetch("http://localhost:3001/signUp",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({nameSignUp: nameSignUp, surnameSignUp: surnameSignUp, emailSignUp: emailSignUp, passwordSignUp: passwordSignUp}),
+      }).then((res)=>res.json()).then((server)=>{
+        document.getElementById("messageSignUp").innerHTML = "<span>Registered</span>"
+        setLog(true) 
+      })
+    }
   }
 
   const logOut = () => {

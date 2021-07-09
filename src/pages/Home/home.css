@@ -1,38 +1,38 @@
-.container-portada {
+.container-page {
 	display: flex;
 	flex-wrap: wrap;
 	margin-top: 20px;
 }
 
-.row-portada {
+.row-page {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	width: 100vw;
 }
 
-.div-portada {
+.div-page {
 	max-width: 32.33%;
 	margin: 0.5% 0.5% 0.5% 0.5%;
 }
 
-.div-portada-50 {
+.div-page-50 {
 	max-width: 49%;
 	margin: 0.5% 0.5% 0% 0.5%;
 }
 
 @media  (max-width: 932px) {
-	.div-portada-50 {
+	.div-page-50 {
 		max-width: 100%;
 		margin: 0.5% 0.5% 0% 0.5%;
 	}
 }
 
-.img-portada {
+.img-page {
 	max-width: 100%;
 }
 
-.img-portada-50 {
+.img-page-50 {
 	max-width: 100%;
 }
 
