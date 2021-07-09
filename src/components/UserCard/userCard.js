@@ -12,7 +12,7 @@ function UserCard(props) {
     }
 
     if (edit === true) {
-        return (<Redirect to={{ pathname:"/updateUser", state:{password: props.password, token: props.token, type: props.type, id: props.id,name:props.name,surname:props.surname,email:props.email}}}/>)
+        return (<Redirect to={{ pathname:"/updateUser", state:{password: props.password, token: props.token, type: props.type, id: props.id, name:props.name,surname:props.surname,email:props.email}}}/>)
     } else {
         return(<>
             <div className="user-card">

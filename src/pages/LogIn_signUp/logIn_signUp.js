@@ -81,7 +81,7 @@ function LogIn_signUp (props) {
                 </div>
                 <p className="signup">
                   You don't have an account?
-                  <a onClick={changeOption}>Sign Up</a>
+                  <a onClick={changeOption}>     SIGN UP</a>
                 </p>
               </div>
             </div>
@@ -103,7 +103,7 @@ function LogIn_signUp (props) {
                 </div>
                 <p className="signup">
                   Do you already have an account? 
-                  <a onClick={changeOption}>LOG IN</a>
+                  <a onClick={changeOption}>     LOG IN</a>
                 </p>
               </div>
             </div>
